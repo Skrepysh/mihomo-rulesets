@@ -1,5 +1,6 @@
 # mihomo-rulesets
 #### This is my own rulesets for Mihomo
+It uses some rules from offical Mihomo's geosite and include my own custom rules from /my-rules/
 ## Usage:
 #### config.yml:
 ```
