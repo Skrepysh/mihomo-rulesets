@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 jobs:
-  generate_lists:
+  generate_rulesets:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
