@@ -1,0 +1,79 @@
+name: Generate Mihomo rulesets by Skrepysh
+
+on:
+  schedule:
+    - cron: "30 1 * * *"
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'my-rules/**'
+  workflow_dispatch:
+  
+permissions:
+  contents: write
+
+jobs:
+  generate_lists:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Pull Changes
+        run: git pull
+
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y curl wget git jq
+         
+      - name: Download and install Mihomo
+        run: |
+          curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases \
+            | grep "browser_download_url.*mihomo-linux-amd64-alpha.*.deb" \
+            | head -n 1 \
+            | cut -d '"' -f 4 \
+            | xargs wget -q -O mihomo-linux-amd64-alpha.deb
+          sudo apt install --fix-missing ./mihomo-linux-amd64-alpha.deb
+        shell: bash
+
+      - name: Generate rulesets
+        env:
+          NO_SKIP: true
+        run: |
+         mkdir -p skrepysh-rulesets
+         curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/youtube.list >> skrepysh-proxy.list
+         curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/google-gemini.list >> skrepysh-proxy.list
+         curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/steam.list >> skrepysh-proxy.list
+         curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/category-ru.list >> skrepysh-direct.list
+         curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/mailru.list >> skrepysh-direct.list
+         curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/google.list >> skrepysh-direct.list
+         curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/baidu.list >> skrepysh-reject.list
+         mihomo convert-ruleset domain text skrepysh-proxy.list skrepysh-proxy.mrs
+         mihomo convert-ruleset domain text skrepysh-direct.list skrepysh-direct.mrs
+         mihomo convert-ruleset domain text skrepysh-reject.list skrepysh-reject.mrs
+         mv skrepysh-proxy.mrs skrepysh-direct.mrs skrepysh-reject.mrs skrepysh-rulesets/
+
+      - name: Delete temp file
+        run: |
+          rm mihomo-linux-amd64-alpha.deb
+          rm skrepysh-proxy.list | skrepysh-direct.list | skrepysh-reject.list
+          
+      - name: Get current date
+        id: date
+        run: |
+          echo "DATE=$(TZ=Europe/Moscow date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      
+      - name: Commit and Push Changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Action
+          author_email: githubaction@githubaction.com
+          message: 'Generating .mrs rule-sets ${{ env.DATE }}'
+          push: true
+          cwd: .
+          default_author: github_actor
+          fetch: --tags --force
+          pathspec_error_handling: ignore
+          github_token: ${{ secrets.RULESET_TOKEN }}
