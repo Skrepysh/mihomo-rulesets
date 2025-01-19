@@ -65,9 +65,6 @@ jobs:
           rm skrepysh-proxy.list 
           rm skrepysh-direct.list 
           rm skrepysh-reject.list
-          rm skrepysh-custom-proxy.list
-          rm skrepysh-custom-direct.list
-          rm skrepysh-custom-reject.list
           
       - name: Get current date
         id: date
