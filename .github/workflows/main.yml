@@ -58,7 +58,9 @@ jobs:
       - name: Delete temp file
         run: |
           rm mihomo-linux-amd64-alpha.deb
-          rm skrepysh-proxy.list | skrepysh-direct.list | skrepysh-reject.list
+          rm skrepysh-proxy.list 
+          rm skrepysh-direct.list 
+          rm skrepysh-reject.list
           
       - name: Get current date
         id: date
