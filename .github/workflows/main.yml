@@ -51,12 +51,9 @@ jobs:
          curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/mailru.list >> skrepysh-direct.list
          curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/google.list >> skrepysh-direct.list
          curl -sw "\n" -L https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/baidu.list >> skrepysh-reject.list
-         curl -sL https://github.com/Skrepysh/mihomo-rulesets/raw/refs/heads/main/my-rules/proxy.list >> skrepysh-custom-proxy.list
-         curl -sL https://github.com/Skrepysh/mihomo-rulesets/raw/refs/heads/main/my-rules/direct.list >> skrepysh-custom-direct.list
-         curl -sL https://github.com/Skrepysh/mihomo-rulesets/raw/refs/heads/main/my-rules/reject.list >> skrepysh-custom-reject.list
-         cat skrepysh-custom-proxy.list >> skrepysh-proxy.list
-         cat skrepysh-custom-direct.list >> skrepysh-direct.list
-         cat skrepysh-custom-reject.list >> skrepysh-reject.list
+         curl -sL https://github.com/Skrepysh/mihomo-rulesets/raw/refs/heads/main/my-rules/proxy.list >> skrepysh-proxy.list
+         curl -sL https://github.com/Skrepysh/mihomo-rulesets/raw/refs/heads/main/my-rules/direct.list >> skrepysh-direct.list
+         curl -sL https://github.com/Skrepysh/mihomo-rulesets/raw/refs/heads/main/my-rules/reject.list >> skrepysh-reject.list
          mihomo convert-ruleset domain text skrepysh-proxy.list skrepysh-proxy.mrs
          mihomo convert-ruleset domain text skrepysh-direct.list skrepysh-direct.mrs
          mihomo convert-ruleset domain text skrepysh-reject.list skrepysh-reject.mrs
