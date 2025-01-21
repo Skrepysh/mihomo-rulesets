@@ -1,0 +1,9 @@
+payload:
+  - GEOSITE,youtube
+  - GEOSITE,google-gemini
+  - GEOSITE,steam
+  - DOMAIN-SUFFIX,ip.sb
+  - DOMAIN,2ip.io
+  - DOMAIN,dnsleaktest.com
+  - DOMAIN,browserleaks.com
+  - DOMAIN-SUFFIX,ua
