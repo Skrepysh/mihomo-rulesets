@@ -2,6 +2,8 @@ payload:
   - GEOSITE,youtube
   - GEOSITE,google-gemini
   - GEOSITE,steam
+  - GEOSITE,ookla-speedtest
+  - GEOSITE,cloudflare
   - DOMAIN-SUFFIX,ip.sb
   - DOMAIN,2ip.io
   - DOMAIN,dnsleaktest.com
