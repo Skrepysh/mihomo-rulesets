@@ -6,6 +6,6 @@ payload:
   - GEOSITE,cloudflare
   - DOMAIN-SUFFIX,ip.sb
   - DOMAIN,2ip.io
-  - DOMAIN,dnsleaktest.com
-  - DOMAIN,browserleaks.com
+  - DOMAIN-SUFFIX,dnsleaktest.com
+  - DOMAIN-SUFFIX,browserleaks.com
   - DOMAIN-SUFFIX,ua
