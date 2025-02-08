@@ -4,6 +4,7 @@ payload:
   - GEOSITE,steam
   - GEOSITE,ookla-speedtest
   - GEOSITE,cloudflare
+  - PROCESS-NAME,Discord.exe
   - DOMAIN-SUFFIX,ip.sb
   - DOMAIN,2ip.io
   - DOMAIN-SUFFIX,dnsleaktest.com
