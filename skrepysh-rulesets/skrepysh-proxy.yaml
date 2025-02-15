@@ -10,3 +10,4 @@ payload:
   - DOMAIN-SUFFIX,dnsleaktest.com
   - DOMAIN-SUFFIX,browserleaks.com
   - DOMAIN-SUFFIX,ua
+  - DOMAIN-SUFFIX,remna.st
