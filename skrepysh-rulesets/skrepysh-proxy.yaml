@@ -5,11 +5,12 @@ payload:
   - GEOSITE,ookla-speedtest
   - PROCESS-NAME,org.zwanoo.android.speedtest
   - GEOSITE,cloudflare
+  - GEOIP,cloudflare
+  - PROCESS-NAME,Discord
   - PROCESS-NAME,Discord.exe
   - DOMAIN-SUFFIX,ip.sb
   - DOMAIN,2ip.io
   - DOMAIN-SUFFIX,dnsleaktest.com
   - DOMAIN-SUFFIX,browserleaks.com
   - DOMAIN-SUFFIX,ua
-  - DOMAIN-SUFFIX,remna.st
   - DOMAIN-SUFFIX,wdfiles.com
