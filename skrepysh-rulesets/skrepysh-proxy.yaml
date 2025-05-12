@@ -1,7 +1,6 @@
 payload:
   - GEOSITE,youtube
   - GEOSITE,google-gemini
-  - GEOSITE,steam
   - GEOSITE,ookla-speedtest
   - PROCESS-NAME,org.zwanoo.android.speedtest
   - GEOSITE,cloudflare
