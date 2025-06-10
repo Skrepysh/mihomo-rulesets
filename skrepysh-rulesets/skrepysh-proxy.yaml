@@ -8,7 +8,7 @@ payload:
   - PROCESS-NAME,Discord
   - PROCESS-NAME,Discord.exe
   - DOMAIN-SUFFIX,ip.sb
-  - DOMAIN,2ip.io
+  - DOMAIN-SUFFIX,2ip.io
   - DOMAIN-SUFFIX,dnsleaktest.com
   - DOMAIN-SUFFIX,browserleaks.com
   - DOMAIN-SUFFIX,ua
